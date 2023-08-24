@@ -1,7 +1,7 @@
 const { ethers } = require("ethers");
 
 const INFURA_ID = ''
-const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/${INFURA_ID}`)
+const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_ID}`)
 
 const account1 = '' // Your account address 1
 const account2 = '' // Your account address 2
@@ -14,7 +14,7 @@ const ERC20_ABI = [
     "function transfer(address to, uint amount) returns (bool)",
 ];
 
-const address = ''
+const address = '0x779877A7B0D9E8603169DdbD7836e478b4624789'
 const contract = new ethers.Contract(address, ERC20_ABI, provider)
 
 const main = async () => {

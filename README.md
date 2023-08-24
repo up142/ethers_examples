@@ -4,7 +4,7 @@ Learn how to use ethers.js from these examples
 ## Technology Stack & Tools
 
 - Javascript (Writing scripts)
-- [Ethers.js](https://docs.ethers.io/v5/) (Blockchain Interaction)
+- [Ethers.js](https://docs.ethers.io/v6/) (Blockchain Interaction)
 - [Node.js](https://nodejs.org/en/) (To run our scripts and install ethers.js)
 - [Infura](https://infura.io/) (Node provider)
 

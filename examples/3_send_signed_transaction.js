@@ -1,7 +1,7 @@
 const { ethers } = require("ethers");
 
 const INFURA_ID = ''
-const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/${INFURA_ID}`)
+const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_ID}`)
 
 const account1 = '' // Your account address 1
 const account2 = '' // Your account address 2
@@ -13,12 +13,12 @@ const main = async () => {
     const senderBalanceBefore = await provider.getBalance(account1)
     const recieverBalanceBefore = await provider.getBalance(account2)
 
-    console.log(`\nSender balance before: ${ethers.utils.formatEther(senderBalanceBefore)}`)
-    console.log(`reciever balance before: ${ethers.utils.formatEther(recieverBalanceBefore)}\n`)
+    console.log(`\nSender balance before: ${ethers.formatEther(senderBalanceBefore)}`)
+    console.log(`reciever balance before: ${ethers.formatEther(recieverBalanceBefore)}\n`)
 
     const tx = await wallet.sendTransaction({
         to: account2,
-        value: ethers.utils.parseEther("0.025")
+        value: ethers.parseEther("0.025")
     })
 
     await tx.wait()
@@ -27,8 +27,8 @@ const main = async () => {
     const senderBalanceAfter = await provider.getBalance(account1)
     const recieverBalanceAfter = await provider.getBalance(account2)
 
-    console.log(`\nSender balance after: ${ethers.utils.formatEther(senderBalanceAfter)}`)
-    console.log(`reciever balance after: ${ethers.utils.formatEther(recieverBalanceAfter)}\n`)
+    console.log(`\nSender balance after: ${ethers.formatEther(senderBalanceAfter)}`)
+    console.log(`reciever balance after: ${ethers.formatEther(recieverBalanceAfter)}\n`)
 }
 
 main()

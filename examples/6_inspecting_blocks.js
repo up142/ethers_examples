@@ -1,21 +1,24 @@
 const { ethers } = require("ethers");
 
 const INFURA_ID = ''
-const provider = new ethers.providers.JsonRpcProvider(`https://mainnet.infura.io/v3/${INFURA_ID}`)
+const provider = new ethers.JsonRpcProvider(`https://mainnet.infura.io/v3/${INFURA_ID}`)
 
 const main = async () => {
-    const block = await provider.getBlockNumber()
+    const blockNumber = await provider.getBlockNumber()
 
-    console.log(`\nBlock Number: ${block}\n`)
+    console.log(`\nBlock Number: ${blockNumber}\n`)
 
-    const blockInfo = await provider.getBlock(block)
+    const block = await provider.getBlock(blockNumber, true)
 
-    console.log(blockInfo)
+    console.log(block)
 
-    const { transactions } = await provider.getBlockWithTransactions(block)
-
-    console.log(`\nLogging first transaction in block:\n`)
-    console.log(transactions[0])
+    if(block.transactions.length > 0) {
+        const transaction = await provider.getTransaction(block.transactions[0])
+        console.log(`\nLogging first transaction in block:\n`)
+        console.log(transaction)
+    } else {
+        console.log(`\nNo transactions in this block.\n`)
+    }
 }
 
 main()

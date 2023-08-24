@@ -1,7 +1,7 @@
 const { ethers } = require("ethers");
 
 const INFURA_ID = ''
-const provider = new ethers.providers.JsonRpcProvider(`https://mainnet.infura.io/v3/${INFURA_ID}`)
+const provider = new ethers.JsonRpcProvider(`https://mainnet.infura.io/v3/${INFURA_ID}`)
 
 const ERC20_ABI = [
     "function name() view returns (string)",
@@ -26,7 +26,7 @@ const main = async () => {
     const balance = await contract.balanceOf('0x6c6Bc977E13Df9b0de53b251522280BB72383700')
 
     console.log(`Balance Returned: ${balance}`)
-    console.log(`Balance Formatted: ${ethers.utils.formatEther(balance)}\n`)
+    console.log(`Balance Formatted: ${ethers.formatEther(balance)}\n`)
 }
 
 main()
